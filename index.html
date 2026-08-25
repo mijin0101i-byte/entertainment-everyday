@@ -1,2 +1,248 @@
-<h1>Hello, Entertainment!</h1>
-<p>これは私のエンタメ作品です。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>あなたの今日、何個エンタメしました？</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f7f5;
+      color: #111;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .small {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      margin-bottom: 30px;
+      color: #777;
+    }
+
+    h1 {
+      font-size: clamp(30px, 8vw, 58px);
+      line-height: 1.25;
+      margin: 0 0 28px;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+
+    .sub {
+      font-size: 15px;
+      line-height: 2;
+      color: #555;
+      margin-bottom: 45px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .start-button {
+      background: #111;
+      color: white;
+      padding: 18px 45px;
+      border-radius: 100px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      transition: 0.3s;
+    }
+
+    .start-button:hover {
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question {
+      font-size: clamp(23px, 6vw, 32px);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 35px;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .choice {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 18px;
+      padding: 22px 10px;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .choice:hover {
+      transform: translateY(-3px);
+      border-color: #111;
+    }
+
+    .counter {
+      margin-top: 32px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: #888;
+    }
+
+    .number {
+      margin-top: 8px;
+      font-size: 52px;
+      font-weight: 700;
+      color: #111;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 最初の画面 -->
+  <section id="startScreen" class="screen">
+    <div class="content">
+
+      <div class="small">
+        ENTERTAINMENT / EVERYDAY
+      </div>
+
+      <h1>
+        今、このページを<br>
+        ご覧くださっているあなたへ。
+      </h1>
+
+      <div class="sub">
+        「エンタメ」と聞いて、<br>
+        何を思い浮かべますか？
+      </div>
+
+      <button class="start-button" onclick="startGame()">
+        体験してみる →
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- 日常を選ぶ画面 -->
+  <section id="gameScreen" class="screen hidden">
+    <div class="content">
+
+      <div class="small">
+        YOUR EVERYDAY
+      </div>
+
+      <div class="sub">
+        少しだけ、今日を振り返ってみてください。
+      </div>
+
+      <div class="question">
+        本日、こんなことをされませんでしたか？
+      </div>
+
+      <div class="choices">
+
+        <button class="choice" onclick="addEntertainment()">
+          🍚 ご飯を食べた
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          ☕ コーヒーを飲んだ
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          🚃 電車に乗った
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          💬 誰かと話した
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          🎧 音楽を聴いた
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          😂 笑った
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          🐕 散歩した
+        </button>
+
+        <button class="choice" onclick="addEntertainment()">
+          ☀️ その他
+        </button>
+
+      </div>
+
+      <div class="counter">
+        TODAY'S ENTERTAINMENT
+
+        <div id="count" class="number">
+          0
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+
+    let count = 0;
+
+    function startGame() {
+
+      document.getElementById("startScreen")
+        .classList.add("hidden");
+
+      document.getElementById("gameScreen")
+        .classList.remove("hidden");
+
+    }
+
+    function addEntertainment() {
+
+      count++;
+
+      document.getElementById("count")
+        .textContent = count;
+
+    }
+
+  </script>
+
+</body>
+</html>
