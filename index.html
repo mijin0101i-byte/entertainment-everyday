@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>あなたの今日、何個エンタメしました？</title>
+  <title>私にとってのエンタメ</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -124,27 +126,77 @@
       font-weight: 700;
       color: #111;
     }
-    .finish-button {
-  margin-top: 35px;
-  background: #111;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 100px;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  transition: 0.3s;
-}
 
-.finish-button:hover {
-  transform: scale(1.05);
-}
+    .finish-button {
+      margin-top: 35px;
+      background: #111;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 100px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      transition: 0.3s;
+    }
+
+    .finish-button:hover {
+      transform: scale(1.05);
+    }
+
+    /* 音楽カード */
+
+    .music-card {
+      background: white;
+      border-radius: 24px;
+      padding: 25px;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .music-image {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
+
+    .music-card h2 {
+      margin: 0 0 20px;
+      font-size: 22px;
+    }
+
+    .music-card audio {
+      width: 100%;
+    }
+
+    /* 最後のメッセージ */
+
+    .final-message {
+      margin-top: 70px;
+      padding-bottom: 60px;
+      line-height: 2;
+    }
+
+    .final-message p {
+      margin: 25px 0;
+      font-size: 14px;
+    }
+
+    .final-message h2 {
+      margin: 45px 0;
+      font-size: 24px;
+      line-height: 1.8;
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- 最初の画面 -->
+
+  <!-- ① 最初の画面 -->
+
   <section id="startScreen" class="screen">
+
     <div class="content">
 
       <div class="small">
@@ -161,16 +213,25 @@
         何を思い浮かべますか？
       </div>
 
-      <button class="start-button" onclick="startGame()">
+      <button
+        class="start-button"
+        onclick="startGame()"
+      >
         体験してみる →
       </button>
 
     </div>
+
   </section>
 
 
-  <!-- 日常を選ぶ画面 -->
-  <section id="gameScreen" class="screen hidden">
+  <!-- ② 日常を選ぶ画面 -->
+
+  <section
+    id="gameScreen"
+    class="screen hidden"
+  >
+
     <div class="content">
 
       <div class="small">
@@ -185,100 +246,156 @@
         本日、こんなことをされませんでしたか？
       </div>
 
+
       <div class="choices">
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           🍚 ご飯を食べた
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           ☕ コーヒーを飲んだ
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           🚃 電車に乗った
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           💬 誰かと話した
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           🎧 音楽を聴いた
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           😂 笑った
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           🐕 散歩した
         </button>
 
-        <button class="choice" onclick="addEntertainment()">
+        <button
+          class="choice"
+          onclick="addEntertainment()"
+        >
           ☀️ その他
         </button>
 
       </div>
 
+
       <div class="counter">
+
         TODAY'S ENTERTAINMENT
 
-        <div id="count" class="number">
+        <div
+          id="count"
+          class="number"
+        >
           0
         </div>
+
       </div>
-<button
-  id="finishButton"
-  class="finish-button hidden"
-  onclick="showResult()">
-  これで全部でしょうか？
-</button>
-      
+
+
+      <button
+        id="finishButton"
+        class="finish-button hidden"
+        onclick="showResult()"
+      >
+        これで全部でしょうか？
+      </button>
+
     </div>
+
   </section>
 
-<!-- 結果画面 -->
-<section id="resultScreen" class="screen hidden">
 
-  <div class="content">
+  <!-- ③ 結果画面 -->
 
-    <div class="small">
-      YOUR ENTERTAINMENT
+  <section
+    id="resultScreen"
+    class="screen hidden"
+  >
+
+    <div class="content">
+
+      <div class="small">
+        YOUR ENTERTAINMENT
+      </div>
+
+      <h1>
+
+        本日は、<br>
+
+        <span id="resultNumber">0</span>つの<br>
+
+        「ちょっとした楽しみ」が<br>
+        ございました。
+
+      </h1>
+
+      <div class="sub">
+        ……でも、きっとまだあります。
+      </div>
+
     </div>
 
-    <h1>
-      本日は、<br>
-      <span id="resultNumber">0</span>つの
-      「ちょっとした楽しみ」がございました。
-    </h1>
+  </section>
 
-    <div class="sub">
-      ……でも、きっとまだあります。
-    </div>
 
-  </div>
+  <!-- ④ 音楽画面 -->
 
-</section>
-  <!-- 音楽ギャラリー -->
-<section id="musicScreen" class="screen hidden">
+  <section
+    id="musicScreen"
+    class="screen hidden"
+  >
 
-  <div class="content">
+    <div class="content">
 
-    <div class="small">
-      MISEI'S ENTERTAINMENT
-    </div>
 
-    <h1>
-      もう少しだけ、<br>
-      楽しんでいかれませんか？
-    </h1>
+      <div class="small">
+        MISEI'S MUSIC
+      </div>
 
-    <div class="sub">
-      私が見つけた「ちょっとした楽しみ」を、<br>
-      音楽にしました。
-    </div>
-         <!-- 花火 -->
+
+      <h1>
+        もう少しだけ、<br>
+        楽しんでいかれませんか？
+      </h1>
+
+
+      <div class="sub">
+        私がつくった音楽を、<br>
+        よろしければお聴きください。
+      </div>
+
+
+      <!-- 花火 -->
 
       <div class="music-card">
 
@@ -438,48 +555,85 @@
 
   </section>
 
+
+  <!-- JavaScript -->
+
   <script>
 
     let count = 0;
 
+
     function startGame() {
 
-      document.getElementById("startScreen")
-        .classList.add("hidden");
+      document
+        .getElementById("startScreen")
+        .classList
+        .add("hidden");
 
-      document.getElementById("gameScreen")
-        .classList.remove("hidden");
+      document
+        .getElementById("gameScreen")
+        .classList
+        .remove("hidden");
 
     }
 
+
     function addEntertainment() {
 
-  count++;
+      count++;
 
-  document.getElementById("count")
-    .textContent = count;
+      document
+        .getElementById("count")
+        .textContent = count;
 
-  if (count >= 1) {
-    document.getElementById("finishButton")
-      .classList.remove("hidden");
-  }
+      if (count >= 1) {
 
-}
+        document
+          .getElementById("finishButton")
+          .classList
+          .remove("hidden");
 
-function showResult() {
+      }
 
-  document.getElementById("gameScreen")
-    .classList.add("hidden");
+    }
 
-  document.getElementById("resultScreen")
-    .classList.remove("hidden");
 
-  document.getElementById("resultNumber")
-    .textContent = count;
+    function showResult() {
 
-}
+      document
+        .getElementById("gameScreen")
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById("resultScreen")
+        .classList
+        .remove("hidden");
+
+      document
+        .getElementById("resultNumber")
+        .textContent = count;
+
+
+      setTimeout(function() {
+
+        document
+          .getElementById("resultScreen")
+          .classList
+          .add("hidden");
+
+        document
+          .getElementById("musicScreen")
+          .classList
+          .remove("hidden");
+
+      }, 3500);
+
+    }
 
   </script>
 
+
 </body>
+
 </html>
