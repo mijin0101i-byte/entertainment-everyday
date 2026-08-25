@@ -124,6 +124,20 @@
       font-weight: 700;
       color: #111;
     }
+    .finish-button {
+  margin-top: 35px;
+  background: #111;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 100px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  transition: 0.3s;
+}
+
+.finish-button:hover {
+  transform: scale(1.05);
+}
   </style>
 </head>
 
@@ -214,11 +228,38 @@
           0
         </div>
       </div>
-
+<button
+  id="finishButton"
+  class="finish-button hidden"
+  onclick="showResult()">
+  これで全部でしょうか？
+</button>
+      
     </div>
   </section>
 
+<!-- 結果画面 -->
+<section id="resultScreen" class="screen hidden">
 
+  <div class="content">
+
+    <div class="small">
+      YOUR ENTERTAINMENT
+    </div>
+
+    <h1>
+      本日は、<br>
+      <span id="resultNumber">0</span>つの
+      「ちょっとした楽しみ」がございました。
+    </h1>
+
+    <div class="sub">
+      ……でも、きっとまだあります。
+    </div>
+
+  </div>
+
+</section>
   <script>
 
     let count = 0;
@@ -235,12 +276,30 @@
 
     function addEntertainment() {
 
-      count++;
+  count++;
 
-      document.getElementById("count")
-        .textContent = count;
+  document.getElementById("count")
+    .textContent = count;
 
-    }
+  if (count >= 1) {
+    document.getElementById("finishButton")
+      .classList.remove("hidden");
+  }
+
+}
+
+function showResult() {
+
+  document.getElementById("gameScreen")
+    .classList.add("hidden");
+
+  document.getElementById("resultScreen")
+    .classList.remove("hidden");
+
+  document.getElementById("resultNumber")
+    .textContent = count;
+
+}
 
   </script>
 
